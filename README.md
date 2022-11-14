@@ -7,6 +7,8 @@ You would probably rather be using
 brighter future, this would be turned into some custom widgets for that. In the timeline
 we actually exist in, expect this to be gently maintained as it causes me problems.
 
+![Screenshot](etc/screenshot.png)
+
 Here's how I load it in my init:
 
 ```elisp
