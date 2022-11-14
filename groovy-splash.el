@@ -1,19 +1,36 @@
-;;; groovy-splash.el --- A groovy Emacs splash screen -*- lexical-binding: t -*-
+;;; groovy-splash.el --- A groovy splash screen      -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2020  Jonathan David Page
+
+;; Author: Jonathan David Page <jonathan@sleepingcyb.org>
+;; URL: https://github.com/jdpage/groovy-splash.el
+;; Keywords: convenience
+;; Version: 0.1
+;; Package-Requires: ((emacs "27") (dash) (all-the-icons))
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; This used to live in my README.org/init.el, but got big and complicated enough that
-;; it was worth breaking it out into its own file, if only so that I don't have to
-;; recompile init.el every time I edit it.
-;; TODO: better commentary
-;;
+
 ;; Segment functions take one integer parameter, HEIGHT, and behave as follows:
 ;;
-;;   - If HEIGHT is nil, just returns a cons of integers (MIN . MAX), where MIN and MAX
-;;     are the minimum and maximum heights in integers. MAX can also be nil, in which
-;;     case there is no maximum height.
+;;   - If HEIGHT is nil, just returns a cons of integers (MIN . MAX), where MIN
+;;     and MAX are the minimum and maximum heights in integers. MAX can also be
+;;     nil, in which case there is no maximum height.
 ;;
-;;   - If HEIGHT is an integer, draws the segment in that many rows. HEIGHT will be
-;;     within the range returned by the function in a call above.
+;;   - If HEIGHT is an integer, draws the segment in that many rows. HEIGHT will
+;;     be within the range returned by the function in a call above.
 
 ;;; Code:
 
@@ -23,7 +40,7 @@
 (require 'recentf)
 
 (defgroup groovy-splash nil
-  "A groovy Emacs splash screen"
+  "A groovy splash screen."
   :group 'applications
   :prefix "groovy-splash-")
 
@@ -443,6 +460,7 @@ with no maximum height."
          (--map-when (null (cdr it)) (cons (car it) (+ (car it) usual-share)))
          (-map 'cdr))))
 
+;;;###autoload
 (defun groovy-splash-show ()
   "Show the splash screen."
   (interactive)
