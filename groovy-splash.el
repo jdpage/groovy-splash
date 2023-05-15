@@ -6,7 +6,7 @@
 ;; URL: https://github.com/jdpage/groovy-splash.el
 ;; Keywords: convenience
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27") (dash) (all-the-icons))
+;; Package-Requires: ((emacs "27") (dash) (nerd-icons))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 ;;; Code:
 
 (require 'dash)
-(require 'all-the-icons)
+(require 'nerd-icons)
 (require 'page-break-lines)
 (require 'recentf)
 
@@ -157,15 +157,17 @@ Otherwise, return the height range for the widget."
       ;; inserting it, measuring it, then using that to refine the size.
       (insert " ")                 ; space so that we can calculate the base line-height
       (let ((base-px-height (groovy-splash--line-pixel-height)))
-        (insert (all-the-icons-fileicon "emacs" :height icon-height :v-adjust 0))
+        (insert (nerd-icons-sucicon "nf-custom-emacs"
+                                    :height icon-height
+                                    :v-adjust 0))
         (let* ((initial-px-height (groovy-splash--line-pixel-height))
                (px-height (* icon-height base-px-height))
                (new-height (/ (* (float icon-height) px-height) initial-px-height)))
           (delete-char -2)
-          (insert (all-the-icons-fileicon "emacs"
-                                          :height new-height
-                                          :v-adjust (if one-line-p nil 0)
-                                          :face 'all-the-icons-purple))))
+          (insert (nerd-icons-sucicon "nf-custom-emacs"
+                                      :height new-height
+                                      :v-adjust (if one-line-p nil 0)
+                                      :face 'nerd-icons-purple))))
       (if one-line-p
           (insert " ")
         (groovy-splash--center-line)
